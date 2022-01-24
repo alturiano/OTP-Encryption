@@ -1,7 +1,7 @@
 OTP-Encryption
 =====================
 
-A small encryption/decryption program for Linux that utilises one-time pads. The program essentially XOR's two files together to create a cipherfile. The program then lets the user delete both the key and original message.
+A small encryption/decryption program for Linux that utilises one-time pads. The program essentially XOR's two files together to create a cipherfile.
 
 While not algorithm based, one-time pad encryption is theoretically unbreakable when used correctly.
 
@@ -16,7 +16,13 @@ Purpose
 The purpose of this project is to create a program that is simple and uncomplicated to use (though making the one time pad truly secure [read random] is arguably no trivial matter), reliable and most importantly trustworthy and available for everyone, thus facilitating correct use of one-time pad encryption.
 
 
-How can you help?
+CONTRIBUTIONS
 =====================
 
-You can contribute by using your expertise to perfect this little program in the true spirit of any open source project.
+Originally forked from https://github.com/PrivacyProject/OTP-Encryption
+The new changes made:
+
+Version 1.3 
+	- Add offset argument (default: 0)
+    - Removed mlockall to run on MAcOS
+    - Removed choice to delete files
