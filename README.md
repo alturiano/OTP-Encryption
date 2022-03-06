@@ -38,13 +38,14 @@ Run the containter in the root of the repository. The files you want to encrypt/
 ### Modes
 ----
 ##### Encryption Mode
-`<sourcefile>` is the file you want to encrypt, `<outputfile>` is the file that would eventually be encrypted, `<keyfile>` or pad file is the encryption key `<offset (default 0)>` to start the encryption with x bytes offset from the first byte on the keyfile
+`<sourcefile>` is the file you want to encrypt, `<outputfile>` is the file that would eventually be encrypted, `<keyfile>` or pad file is the encryption key, `<offset (default 0)>` to start the encryption with x bytes offset from the first byte on the keyfile.
 
 ##### Decryption Mode
-`<sourcefile>` is the encrypted file you want to decrypt, `<outputfile>` is the file that would be eventually deecrypted to plain text, `<keyfile>` or pad file is the key that was used to encrypt the original file `<offset (default 0)>` the offset used to encrypt the original file
+`<sourcefile>` is the encrypted file you want to decrypt, `<outputfile>` is the file that would be eventually decrypted to plain text, `<keyfile>` or pad file is the key that was used to encrypt the original file, `<offset (default 0)>` the offset used to encrypt the original file
 
 # Other Versions
 ----
-There is a python version version [here](https://github.com/r00ne/pyOTP-Encryption)
-This porject was Originally forked from https://github.com/PrivacyProject/OTP-Encryption
+There is a python version version [here](https://github.com/r00ne/pyOTP-Encryption).
+
+This project was Originally forked from https://github.com/PrivacyProject/OTP-Encryption.
 
