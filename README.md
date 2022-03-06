@@ -7,7 +7,7 @@ This is an encryption/decryption **poc** written in C based on one-time pad **(O
 **One-time pad encryption is theoretically [unbreakable](https://en.wikipedia.org/wiki/One-time_pad) when used correctly.**
 
 # Usage
-----
+
 ### Linux and MacOS
 Compile OTP.c with **gcc**:
 
@@ -44,7 +44,7 @@ Run the containter in the root of the repository. The files you want to encrypt/
 `<sourcefile>` is the encrypted file you want to decrypt, `<outputfile>` is the file that would be eventually decrypted to plain text, `<keyfile>` or pad file is the key that was used to encrypt the original file, `<offset (default 0)>` the offset used to encrypt the original file
 
 # Other Versions
-----
+
 There is a python version version [here](https://github.com/r00ne/pyOTP-Encryption).
 
 This project was Originally forked from https://github.com/PrivacyProject/OTP-Encryption.
