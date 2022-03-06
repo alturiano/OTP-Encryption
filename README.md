@@ -1,28 +1,44 @@
-OTP-Encryption
-=====================
+# OTP-Encryption
 
-A small encryption/decryption program for Linux that utilises one-time pads. The program essentially XOR's two files together to create a cipherfile.
+[![Na|solid](https://img.shields.io/badge/license-GPL-brightgreen)](https://github.com/r00ne/OTP-Encryption/blob/master/LICENSE)
 
-While not algorithm based, one-time pad encryption is theoretically unbreakable when used correctly.
+This is an encryption/decryption **poc** written in C based on one-time pad **(OTP) encryption**. The program essentially XOR's two files (source file & key file) together to create the cipherfile (output file). The key file must be at least as long as the source file. If you want to use an offset then the key file must be at least as long as **sourcefile + offset**.
 
-Background
-=====================
+**One-time pad encryption is theoretically [unbreakable](https://en.wikipedia.org/wiki/One-time_pad) when used correctly.**
 
-As a quick search on Wikipedia will tell you "the one-time pad (OTP) is a type of encryption that is impossible to crack if used correctly. Each bit or character from the plaintext is encrypted by a modular addition with a bit or character from a secret random key (or pad) of the same length as the plaintext, resulting in a ciphertext. If the key is truly random, at least as long as the plaintext, never reused in whole or part, and kept secret, the ciphertext will be impossible to decrypt or break without knowing the key".
+# Usage
 
-Purpose
-=====================
+### Linux and MacOS
+Compile OTP.c with **gcc**
+`gcc OTP.c -o OTP`
 
-The purpose of this project is to create a program that is simple and uncomplicated to use (though making the one time pad truly secure [read random] is arguably no trivial matter), reliable and most importantly trustworthy and available for everyone, thus facilitating correct use of one-time pad encryption.
+Make the file executable
+`chmod +x OTP`
 
+Then execute
+`./OTP <source file> <output file> <keyfile> <offset (default 0)>`
 
-CONTRIBUTIONS
-=====================
+### Docker
+Build the container in root of the repository. 
+`docker build -t otp-encryption .`
+
+Run the containter in the root of the repository. The files you want to encrypt/decrypt should be on the root of the repository as well.
+##### Linux/MacOS/Powershell
+`docker run -v ${PWD}:/home otp-encryption <source file> <output file> <keyfile> <offset (default 0)>`
+##### Windows
+`docker run -v %cd%:/home otp-encryption out <source file> <output file> <keyfile> <offset (default 0)>`
+### Modes
+
+##### Encryption Mode
+`<source file>` is the file you want to encrypt, `<output file>` is the file that would eventually be encrypted, `<key file>` or pad file is the encryption key `<offset (default 0)>` to start the encryption with x bytes offset from the first byte on the keyfile
+
+##### Decryption Mode
+`<source file>` is the encrypted file you want to decrypt, `<output file>` is the file that would be eventually deecrypted to plain text, `<key file>` or pad file is the key that was used to encrypt the original file `<offset (default 0)>` the offset used to encrypt the original file
+
+# Python 
+There is a python version version [here](https://github.com/r00ne/pyOTP-Encryption)
+
+# Contributions
 
 Originally forked from https://github.com/PrivacyProject/OTP-Encryption
-The new changes made:
 
-Version 1.3 
-	- Add offset argument (default: 0)
-    - Removed mlockall to run on MAcOS
-    - Removed choice to delete files

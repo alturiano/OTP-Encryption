@@ -20,7 +20,7 @@ below:
 The  author takes no  responsibility  for use of    
 this program.               
                                                                     
-Compile: gcc -o OTP ./Desktop/OTP.c 
+Compile: gcc OTP.c -o OTP 
 Versions:
 1.3 - Add offset argument (default: 0)
     - Removed mlockall to run on MAcOS
@@ -46,15 +46,9 @@ int main(int argc, char **argv)
 
     char buffer[20];
     char ans;
-    int key = 0, data = 0, output = 0, count = 0, offset = 293;
+    int key = 0, data = 0, output = 0, count = 0, offset = 0;
     int *buf;
     FILE *keyfile, *sourcefile, *destfile;
-
-    if(geteuid())
-    {
-        puts("Root access is required to run this program.");
-        return -1;
-    }
 
     if(argc < 4)
     {
@@ -73,6 +67,8 @@ int main(int argc, char **argv)
         puts("below:");
         puts("    - Be of the same size or larger than the");
         puts("      source file.");
+        puts("    - If offset is implemented, then sourcefile");
+        puts("      must be <= than keyfile + offset.");
         puts("    - Be completely random, preferably generated");
         puts("      by a Hardware Random Number Generator.");
         puts("    - NEVER be reused!\n");
@@ -116,10 +112,17 @@ int main(int argc, char **argv)
     /* Get size of keyfile */
     fstat(fileno(keyfile), &keybuf);
 
-    /* Check if keyfile is the same size as, or bigger than the sourcefile */
-    if((keybuf.st_size) < (statbuf.st_size))
+    /* Get the offset */
+    if (argv[4] != NULL)
     {
-        puts("Source file is larger than keyfile.");
+        offset = atoi(argv[4]);
+        printf("Offset set to %d .", offset);
+    }
+
+    /* Check if keyfile is the same size as, or bigger than the sourcefile */
+    if((keybuf.st_size) <= (statbuf.st_size + offset))
+    {
+        puts("Source file is larger than keyfile + offset");
         puts("Action not allowed.");
         puts("Exiting...");
         free (buf);
@@ -133,13 +136,6 @@ int main(int argc, char **argv)
         perror("Error");
         free (buf);
         return -8;
-    }
-
-    /* Set the offset */
-    if (argv[4] != NULL)
-    {
-        offset = atoi(argv[4]);
-        printf("Offset set to %d ", offset);
     }
         
     /* Set offset position on keyfile*/
@@ -164,7 +160,6 @@ int main(int argc, char **argv)
     fclose(destfile);
 
     puts("Encryption/Decryption Complete.");
-    
 
     /* cleanup */
     puts("Releasing memory.");
