@@ -75,7 +75,7 @@ int main(int argc, char **argv)
         puts("The  author takes no  responsibility  for use of");
         puts("this program.\n");
         puts("Usage:");
-        puts("OTP <source file> <output file> <keyfile> <offset (default 0)>");
+        puts("OTP <sourcefile> <outputfile> <keyfile> <offset (default 0)>");
         return (0);
     }
 
