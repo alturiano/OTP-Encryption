@@ -7,38 +7,44 @@ This is an encryption/decryption **poc** written in C based on one-time pad **(O
 **One-time pad encryption is theoretically [unbreakable](https://en.wikipedia.org/wiki/One-time_pad) when used correctly.**
 
 # Usage
-
+----
 ### Linux and MacOS
-Compile OTP.c with **gcc**
-`gcc OTP.c -o OTP`
+Compile OTP.c with **gcc**:
 
-Make the file executable
-`chmod +x OTP`
+    gcc OTP.c -o OTP
 
-Then execute
-`./OTP <source file> <output file> <keyfile> <offset (default 0)>`
+Make the file executable:
+
+    chmod +x OTP
+
+Then execute:
+
+    ./OTP <source file> <output file> <keyfile> <offset (default 0)>
 
 ### Docker
-Build the container in root of the repository. 
-`docker build -t otp-encryption .`
+----
+Build the container in root of the repository:
 
-Run the containter in the root of the repository. The files you want to encrypt/decrypt should be on the root of the repository as well.
+    docker build -t otp-encryption .
+
+Run the containter in the root of the repository. The files you want to encrypt/decrypt should be on the root of the repository as well:
+
 ##### Linux/MacOS/Powershell
-`docker run -v ${PWD}:/home otp-encryption <source file> <output file> <keyfile> <offset (default 0)>`
+    docker run -v ${PWD}:/home otp-encryption <source file> <output file> <keyfile> <offset (default 0)>
+    
 ##### Windows
-`docker run -v %cd%:/home otp-encryption out <source file> <output file> <keyfile> <offset (default 0)>`
-### Modes
+    docker run -v %cd%:/home otp-encryption out <source file> <output file> <keyfile> <offset (default 0)>
 
+### Modes
+----
 ##### Encryption Mode
 `<source file>` is the file you want to encrypt, `<output file>` is the file that would eventually be encrypted, `<key file>` or pad file is the encryption key `<offset (default 0)>` to start the encryption with x bytes offset from the first byte on the keyfile
 
 ##### Decryption Mode
 `<source file>` is the encrypted file you want to decrypt, `<output file>` is the file that would be eventually deecrypted to plain text, `<key file>` or pad file is the key that was used to encrypt the original file `<offset (default 0)>` the offset used to encrypt the original file
 
-# Python 
+# Other Versions
+----
 There is a python version version [here](https://github.com/r00ne/pyOTP-Encryption)
-
-# Contributions
-
-Originally forked from https://github.com/PrivacyProject/OTP-Encryption
+This porject was Originally forked from https://github.com/PrivacyProject/OTP-Encryption
 
