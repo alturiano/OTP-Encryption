@@ -116,11 +116,11 @@ int main(int argc, char **argv)
     if (argv[4] != NULL)
     {
         offset = atoi(argv[4]);
-        printf("Offset set to %d .", offset);
+        printf("Offset set to %d.\n", offset);
     }
 
     /* Check if keyfile is the same size as, or bigger than the sourcefile */
-    if((keybuf.st_size) <= (statbuf.st_size + offset))
+    if((keybuf.st_size) < (statbuf.st_size + offset))
     {
         puts("Source file is larger than keyfile + offset");
         puts("Action not allowed.");
