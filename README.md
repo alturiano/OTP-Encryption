@@ -33,7 +33,7 @@ Run the containter in the root of the repository. The files you want to encrypt/
     docker run -v ${PWD}:/home otp-encryption <sourcefile> <outputfile> <keyfile> <offset (default 0)>
     
 ##### Windows
-    docker run -v %cd%:/home otp-encryption out <sourcefile> <outputfile> <keyfile> <offset (default 0)>
+    docker run -v %cd%:/home otp-encryption <sourcefile> <outputfile> <keyfile> <offset (default 0)>
 
 ### Modes
 ----
