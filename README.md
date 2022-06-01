@@ -45,7 +45,7 @@ Run the containter in the root of the repository. The files you want to encrypt/
 
 # Other Versions
 
-There is a python version version [here](https://github.com/r00ne/pyOTP-Encryption).
+There is a python version version [here](https://github.com/alturiano/pyOTP-Encryption).
 
 This project was Originally forked from https://github.com/PrivacyProject/OTP-Encryption.
 
